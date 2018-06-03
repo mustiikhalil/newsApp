@@ -12,10 +12,15 @@ class MainVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupView()
     }
 }
 
 extension MainVC {
-    //MARK:- Collection View function
+    //MARK:- UI setup
+    func setupView() {
+        collectionView?.backgroundColor = .white
+        self.title = "Channels"
+        collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: CellIdentifier.channel.ID())
+    }
 }
-
