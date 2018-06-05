@@ -11,7 +11,9 @@ import Foundation
 enum CellIdentifier: String {
     case channel
     
-    func ID() -> String {
-        return self.rawValue
+    var ID: String {
+        get {
+            return self.rawValue
+        }
     }
 }

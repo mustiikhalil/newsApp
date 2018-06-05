@@ -13,12 +13,12 @@ extension MainVC {
     //MARK:- Collection View function
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return channels.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier.channel.ID(), for: indexPath)
-        cell.backgroundColor = .blue
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier.channel.ID, for: indexPath) as! ChannelCell
+        cell.configure(data: channels[indexPath.row])
         return cell
     }
     

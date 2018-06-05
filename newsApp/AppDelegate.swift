@@ -8,6 +8,10 @@
 
 import UIKit
 
+let logger = Logger()
+let log = logger.logger
+let network = Networking(baseURL: BASE_URL, APIKey: newsAPIKey)
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
