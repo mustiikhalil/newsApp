@@ -10,7 +10,7 @@ import Foundation
 
 enum CellIdentifier: String {
     case channel
-    
+    case news
     var ID: String {
         get {
             return self.rawValue

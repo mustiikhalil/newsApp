@@ -38,4 +38,23 @@ class Networking {
             }
         }
     }
+    
+    func fetchHeadlines(extensionURL: String, onSuccess: @escaping (Articles) -> Void, onFailure: @escaping (Error) -> Void) {
+        Alamofire.request(URL(string: "\(url)\(extensionURL)\(APIKey)")!).response {
+            (response) in
+            if response.response?.statusCode == 200 {
+                do {
+                    if let json = response.data {
+                        let data = try JSONDecoder().decode(Articles.self, from: json)
+                        log.verbose("Success")
+                        onSuccess(data)
+                    }
+                    
+                } catch let err {
+                    log.error(err)
+                    onFailure(err)
+                }
+            }
+        }
+    }
 }

@@ -12,6 +12,12 @@ let extensionURL = URLExtension()
 let BASE_URL = "https://newsapi.org/v2/"
 
 struct URLExtension {
-    let header = String(format: "top-headlines?country=us&apiKey=")
+    let apiKeyString = String(format: "&apiKey=")
+    let headLines = String(format: "top-headlines?sources=")
     let source = String(format: "sources?apiKey=")
+    
+    func URLBuilder (source: String) -> String {
+        return headLines + source + apiKeyString
+    }
+
 }

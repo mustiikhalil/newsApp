@@ -26,6 +26,9 @@
 		DF7A0ECD20C41AB5000B8073 /* newsAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7A0ECC20C41AB5000B8073 /* newsAppTests.swift */; };
 		DF7A0ED820C41AB5000B8073 /* newsAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7A0ED720C41AB5000B8073 /* newsAppUITests.swift */; };
 		DFD3623420C4863B006DF31C /* ChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD3623320C4863B006DF31C /* ChannelCell.swift */; };
+		DFE65D9320C6D46200E764C0 /* NewsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE65D9220C6D46200E764C0 /* NewsVC.swift */; };
+		DFE65D9520C6D7C000E764C0 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE65D9420C6D7C000E764C0 /* NewsCell.swift */; };
+		DFE65D9720C6D83100E764C0 /* NewsVC+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE65D9620C6D83100E764C0 /* NewsVC+CollectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +77,9 @@
 		DF7A0ED720C41AB5000B8073 /* newsAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newsAppUITests.swift; sourceTree = "<group>"; };
 		DF7A0ED920C41AB5000B8073 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DFD3623320C4863B006DF31C /* ChannelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCell.swift; sourceTree = "<group>"; };
+		DFE65D9220C6D46200E764C0 /* NewsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsVC.swift; sourceTree = "<group>"; };
+		DFE65D9420C6D7C000E764C0 /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
+		DFE65D9620C6D83100E764C0 /* NewsVC+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewsVC+CollectionView.swift"; sourceTree = "<group>"; };
 		F60CDC08B665CDF793460A95 /* Pods-newsApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-newsApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-newsApp/Pods-newsApp.release.xcconfig"; sourceTree = "<group>"; };
 		FB46CC04113193CD7A982990 /* Pods_newsAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_newsAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDA0F0B85B464A7BA527912F /* Pods-newsAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-newsAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-newsAppUITests/Pods-newsAppUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -162,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				DFD3623320C4863B006DF31C /* ChannelCell.swift */,
+				DFE65D9420C6D7C000E764C0 /* NewsCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -169,6 +176,7 @@
 		DF655E4820C44F2200015236 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				DFE65D9120C6D45400E764C0 /* NewsVC */,
 				DF655E4920C44F2A00015236 /* MainVC */,
 			);
 			path = Controller;
@@ -238,6 +246,15 @@
 				DF7A0ED920C41AB5000B8073 /* Info.plist */,
 			);
 			path = newsAppUITests;
+			sourceTree = "<group>";
+		};
+		DFE65D9120C6D45400E764C0 /* NewsVC */ = {
+			isa = PBXGroup;
+			children = (
+				DFE65D9220C6D46200E764C0 /* NewsVC.swift */,
+				DFE65D9620C6D83100E764C0 /* NewsVC+CollectionView.swift */,
+			);
+			path = NewsVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -464,8 +481,11 @@
 				DF655E4520C44EFC00015236 /* CellIdentifier.swift in Sources */,
 				DF53F5F720C617A60098CFE6 /* Articles.swift in Sources */,
 				DFD3623420C4863B006DF31C /* ChannelCell.swift in Sources */,
+				DFE65D9320C6D46200E764C0 /* NewsVC.swift in Sources */,
 				DF53F5F320C617590098CFE6 /* Networking-Layer.swift in Sources */,
 				DF655E4B20C44F4500015236 /* MainVC+CollectionView.swift in Sources */,
+				DFE65D9520C6D7C000E764C0 /* NewsCell.swift in Sources */,
+				DFE65D9720C6D83100E764C0 /* NewsVC+CollectionView.swift in Sources */,
 				DF53F5F520C617900098CFE6 /* Errors.swift in Sources */,
 				DF7A0EB820C41AB4000B8073 /* AppDelegate.swift in Sources */,
 				DF44AA1720C5D82500791F06 /* logger.swift in Sources */,

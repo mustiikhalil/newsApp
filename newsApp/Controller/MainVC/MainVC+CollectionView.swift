@@ -26,4 +26,10 @@ extension MainVC {
         return CGSize(width: view.bounds.width, height: CGFloat(70))
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = NewsVC(collectionViewLayout: UICollectionViewFlowLayout())
+        vc.source = channels[indexPath.row]
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }
