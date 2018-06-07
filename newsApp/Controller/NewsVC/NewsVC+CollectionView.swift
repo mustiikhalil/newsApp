@@ -15,7 +15,7 @@ extension NewsVC {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier.news.ID, for: indexPath) as! NewsCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier.News.ID, for: indexPath) as! NewsCell
         cell.configure(data: articles[indexPath.row])
         return cell
     }

@@ -13,22 +13,25 @@ class MainVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     var channels: [Source] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupView()
+        performDataFetching()
+    }
+    
+    func performDataFetching() {
         if channels.count == 0 {
-            populate()
+            fetchData()
         }
     }
     
-    func populate() {
-        network.fetchSources(extensionURL: extensionURL.source, onSuccess: {
-            sources in
+    func fetchData() {
+        
+        network.fetchData(url: URL(string: "\(network.url)\(extensionURL.source)\(network.APIKey)")!, onSuccess: { (sources: Sources) in
             self.channels = sources.sources
             self.collectionView?.reloadData()
-        }, onFailure: {
-            fail in
-            print(fail)
-        })
+        }) { (e) in
+            log.error(e)
+        }
     }
 }
 
@@ -36,7 +39,7 @@ extension MainVC {
     //MARK:- UI setup
     func setupView() {
         collectionView?.backgroundColor = .white
-        self.title = "Channels"
-        collectionView?.register(ChannelCell.self, forCellWithReuseIdentifier: CellIdentifier.channel.ID)
+        self.title = CellIdentifier.Channels.ID
+        collectionView?.register(ChannelCell.self, forCellWithReuseIdentifier: CellIdentifier.Channels.ID)
     }
 }

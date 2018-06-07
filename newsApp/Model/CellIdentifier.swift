@@ -9,8 +9,8 @@
 import Foundation
 
 enum CellIdentifier: String {
-    case channel
-    case news
+    case Channels
+    case News
     var ID: String {
         get {
             return self.rawValue

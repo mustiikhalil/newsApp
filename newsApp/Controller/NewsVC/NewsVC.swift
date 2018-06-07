@@ -17,13 +17,18 @@ class NewsVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
         super.viewDidLoad()
         
         setupView()
-        network.fetchHeadlines(extensionURL: extensionURL.URLBuilder(source: source.id!), onSuccess: { (Articles) in
+        fetchData()
+    }
+    
+    func fetchData() {
+        network.fetchData (url: URL(string: "\(network.url)\(extensionURL.URLBuilder(source: source.id!))\(network.APIKey)")!, onSuccess: { (Articles: Articles) in
             self.articles = Articles.articles
             self.collectionView?.reloadData()
         }) { (e) in
             print(e)
         }
     }
+    
 }
 
 extension NewsVC {
@@ -32,6 +37,6 @@ extension NewsVC {
         collectionView?.backgroundColor = .white
         self.title = source.name
         
-        collectionView?.register(NewsCell.self, forCellWithReuseIdentifier: CellIdentifier.news.ID)
+        collectionView?.register(NewsCell.self, forCellWithReuseIdentifier: CellIdentifier.News.ID)
     }
 }
