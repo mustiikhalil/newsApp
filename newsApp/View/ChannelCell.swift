@@ -7,9 +7,8 @@
 //
 
 import UIKit
-import SnapKit
 
-class ChannelCell: UICollectionViewCell {
+class ChannelCell: GenericCell<Source> {
     
     let title: UILabel = {
         let label = UILabel()
@@ -33,10 +32,16 @@ class ChannelCell: UICollectionViewCell {
     
     func setupView() {
         addSubview(title)
-        title.snp.makeConstraints { (make) in
-            make.top.equalTo(contentView.snp.top).offset(8)
-            make.left.equalTo(contentView.snp.left).offset(4)
-
+        title.translatesAutoresizingMaskIntoConstraints = false
+        title.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4.0).isActive = true
+        title.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 4.0).isActive = true
+        title.widthAnchor.constraint(equalToConstant: contentView.frame.width).isActive = true
+        title.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
+    }
+    
+    override var item: Source! {
+        didSet {
+            title.text = item.name
         }
     }
 }

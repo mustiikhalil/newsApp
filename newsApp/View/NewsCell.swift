@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SnapKit
 
-class NewsCell: UICollectionViewCell {
+class NewsCell: GenericCell<Article> {
     
     let title: UILabel = {
         let label = UILabel()
@@ -38,11 +39,14 @@ class NewsCell: UICollectionViewCell {
     
     func setupView() {
         addSubview(title)
-        addSubview(information)
         title.snp.makeConstraints { (make) in
             make.top.equalTo(contentView.snp.top).offset(8)
             make.left.equalTo(contentView.snp.left).offset(4)
-            
+        }
+    }
+    override var item: Article! {
+        didSet {
+            title.text = item.title
         }
     }
 }

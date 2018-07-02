@@ -28,6 +28,7 @@ class Networking {
                     if let json = response.data {
                         let data = try JSONDecoder().decode(T.self, from: json)
                         log.verbose("Success")
+                        print(data)
                         onSuccess(data)
                     }
                     

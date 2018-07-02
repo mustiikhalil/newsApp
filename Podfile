@@ -8,7 +8,7 @@ target 'newsApp' do
   # Pods for newsApp
   pod 'SnapKit'
   pod 'SwiftyBeaver'
-  pod 'TRON'
+  pod 'Alamofire'
 
   target 'newsAppTests' do
     inherit! :search_paths

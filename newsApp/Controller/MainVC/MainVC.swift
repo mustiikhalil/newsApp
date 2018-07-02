@@ -8,38 +8,45 @@
 
 import UIKit
 
-class MainVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-
-    var channels: [Source] = []
+class MainVC: BaseCollectionViewController<ChannelCell, Source>, UICollectionViewDelegateFlowLayout {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupView()
-        performDataFetching()
+        fetchData()
     }
-    
-    func performDataFetching() {
-        if channels.count == 0 {
-            fetchData()
+
+    func fetchData() {
+        if items.count == 0 {
+            fetch()
         }
     }
     
-    func fetchData() {
-        
+    private func fetch() {
         network.fetchData(url: URL(string: "\(network.url)\(extensionURL.source)\(network.APIKey)")!, onSuccess: { (sources: Sources) in
-            self.channels = sources.sources
+            self.items = sources.sources
             self.collectionView?.reloadData()
         }) { (e) in
             log.error(e)
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.bounds.width, height: CGFloat(70))
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let navStack = self.navigationController else {return}
+        let newsVC = NewsVC(newSource: items[indexPath.row], collectionViewLayout: UICollectionViewFlowLayout())
+        navStack.pushViewController(newsVC, animated: true)
     }
 }
 
 extension MainVC {
     //MARK:- UI setup
     func setupView() {
+        collectionView?.autoresizingMask = [.flexibleWidth,.flexibleHeight]
+        collectionView?.alwaysBounceVertical = true
         collectionView?.backgroundColor = .white
-        self.title = CellIdentifier.Channels.ID
-        collectionView?.register(ChannelCell.self, forCellWithReuseIdentifier: CellIdentifier.Channels.ID)
     }
 }

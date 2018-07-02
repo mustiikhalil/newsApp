@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        let root = MainVC(collectionViewLayout: UICollectionViewFlowLayout())
+        let root = MainVC(withCellID: CellIdentifier.Channels.ID, collectionViewLayout: UICollectionViewFlowLayout())
         window?.rootViewController = UINavigationController(rootViewController: root)
         window?.makeKeyAndVisible()
         

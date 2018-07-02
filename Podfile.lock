@@ -2,37 +2,23 @@ PODS:
   - Alamofire (4.7.2)
   - SnapKit (4.0.0)
   - SwiftyBeaver (1.6.0)
-  - SwiftyJSON (4.1.0)
-  - TRON (4.2.1):
-    - Alamofire (~> 4.5)
-    - TRON/SwiftyJSON (= 4.2.1)
-  - TRON/Core (4.2.1):
-    - Alamofire (~> 4.5)
-  - TRON/SwiftyJSON (4.2.1):
-    - Alamofire (~> 4.5)
-    - SwiftyJSON (~> 4.0)
-    - TRON/Core
 
 DEPENDENCIES:
+  - Alamofire
   - SnapKit
   - SwiftyBeaver
-  - TRON
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Alamofire
     - SnapKit
     - SwiftyBeaver
-    - SwiftyJSON
-    - TRON
 
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SwiftyBeaver: e45759613e50b522b0e6f53b1f0f14389b45ca34
-  SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
-  TRON: eb0f572d97dd51ec309a27bc785ec82148500512
 
-PODFILE CHECKSUM: 26369cb7b9529a96162e7f7be0b1c575828cdea4
+PODFILE CHECKSUM: 886c1d023055682af2085b2fbf274cb1af0444ec
 
 COCOAPODS: 1.5.0
