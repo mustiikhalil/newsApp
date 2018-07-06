@@ -10,13 +10,12 @@ import Foundation
 import Alamofire
 
 class Networking {
-    var url: String
-    var APIKey: String
+    
+    var urls: URLS
     var headers = ["Content-Type":"application/json"]
     
-    init(baseURL: String, APIKey:String) {
-        self.url = baseURL
-        self.APIKey = APIKey
+    init(baseURLs: URLS) {
+        self.urls = baseURLs
     }
     
     func fetchData<T: Decodable> (url: URL, onSuccess: @escaping (T) -> Void, onFailure: @escaping (Error) -> Void) {
@@ -26,9 +25,9 @@ class Networking {
             if response.response?.statusCode == 200 {
                 do {
                     if let json = response.data {
+                        
                         let data = try JSONDecoder().decode(T.self, from: json)
                         log.verbose("Success")
-                        print(data)
                         onSuccess(data)
                     }
                     

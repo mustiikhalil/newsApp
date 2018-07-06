@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainVC: BaseCollectionViewController<ChannelCell, Source>, UICollectionViewDelegateFlowLayout {
+class MainVC: BaseCollectionViewController<ChannelCell, SourceViewModel>, UICollectionViewDelegateFlowLayout {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,10 +21,12 @@ class MainVC: BaseCollectionViewController<ChannelCell, Source>, UICollectionVie
             fetch()
         }
     }
-    
+
     private func fetch() {
-        network.fetchData(url: URL(string: "\(network.url)\(extensionURL.source)\(network.APIKey)")!, onSuccess: { (sources: Sources) in
-            self.items = sources.sources
+        network.fetchData(url: URL(string: network.urls.sources)!, onSuccess: { (sources: Sources) in
+            self.items = sources.sources.map({ (source) -> SourceViewModel in
+                return SourceViewModel(source: source)
+            })
             self.collectionView?.reloadData()
         }) { (e) in
             log.error(e)
@@ -37,7 +39,7 @@ class MainVC: BaseCollectionViewController<ChannelCell, Source>, UICollectionVie
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let navStack = self.navigationController else {return}
-        let newsVC = NewsVC(newSource: items[indexPath.row], collectionViewLayout: UICollectionViewFlowLayout())
+        let newsVC = NewsVC(newSourceVM: items[indexPath.row], collectionViewLayout: UICollectionViewFlowLayout())
         navStack.pushViewController(newsVC, animated: true)
     }
 }

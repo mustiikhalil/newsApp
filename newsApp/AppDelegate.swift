@@ -10,13 +10,12 @@ import UIKit
 
 let logger = Logger()
 let log = logger.logger
-let network = Networking(baseURL: BASE_URL, APIKey: newsAPIKey)
+let network = Networking(baseURLs: URLS(APIkey: newsAPIKey))
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         

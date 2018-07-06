@@ -33,4 +33,12 @@ class newsAppTests: XCTestCase {
         }
     }
     
+    func testNews() {
+        let article = Article(source: Source(id: "123", name: "abcNews"), title: "welcome h", description: "xcv", url: "https://")
+        let articleVM = ArticleViewModel(article: article)
+        
+        XCTAssertEqual(article.source?.id, articleVM.id)
+        XCTAssertEqual(article.source?.name, articleVM.name)
+    }
+    
 }

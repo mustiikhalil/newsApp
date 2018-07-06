@@ -8,13 +8,13 @@
 
 import UIKit
 
-class NewsVC: BaseCollectionViewController<NewsCell, Article>, UICollectionViewDelegateFlowLayout {
+class NewsVC: BaseCollectionViewController<NewsCell, ArticleViewModel>, UICollectionViewDelegateFlowLayout {
     
-    var source: Source!
+    var source: SourceViewModel!
     
-    init(newSource: Source, collectionViewLayout layout: UICollectionViewLayout) {
+    init(newSourceVM: SourceViewModel, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(withCellID: CellIdentifier.News.ID, collectionViewLayout: layout)
-        self.source = newSource
+        self.source = newSourceVM
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -28,8 +28,10 @@ class NewsVC: BaseCollectionViewController<NewsCell, Article>, UICollectionViewD
     }
     
     private func fetchData() {
-        network.fetchData (url: URL(string: "\(network.url)\(extensionURL.URLBuilder(source: source.id!))\(network.APIKey)")!, onSuccess: { (Articles: Articles) in
-                self.items = Articles.articles
+        network.fetchData (url: URL(string: network.urls.headLines(from: source.id))!, onSuccess: { (Articles: Articles) in
+            self.items = Articles.articles.map({ (article) -> ArticleViewModel in
+                return ArticleViewModel(article: article)
+            })
                 self.collectionView?.reloadData()
             }) { (e) in
                 print(e)

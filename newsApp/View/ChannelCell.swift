@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChannelCell: GenericCell<Source> {
+class ChannelCell: GenericCell<SourceViewModel> {
     
     let title: UILabel = {
         let label = UILabel()
@@ -39,7 +39,7 @@ class ChannelCell: GenericCell<Source> {
         title.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
     }
     
-    override var item: Source! {
+    override var item: SourceViewModel! {
         didSet {
             title.text = item.name
         }

@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class NewsCell: GenericCell<Article> {
+class NewsCell: GenericCell<ArticleViewModel> {
     
     let title: UILabel = {
         let label = UILabel()
@@ -44,7 +44,7 @@ class NewsCell: GenericCell<Article> {
             make.left.equalTo(contentView.snp.left).offset(4)
         }
     }
-    override var item: Article! {
+    override var item: ArticleViewModel! {
         didSet {
             title.text = item.title
         }
