@@ -9,10 +9,12 @@
 import Foundation
 
 struct SourceViewModel {
+    
     let name: String
-    let id: String
+    let sourceID: String
+    
     init(source: Source) {
         name = source.name ?? ""
-        id = source.id ?? ""
+        sourceID = source.id ?? ""
     }
 }

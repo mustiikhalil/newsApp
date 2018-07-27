@@ -22,9 +22,9 @@ struct URLS {
         }
     }
     
-    func headLines(from id: String) -> String {
+    func headLines(from source: String) -> String {
         
-        return _BASE_URL + _headLines + id + _apiKeyString + _APIKey
+        return _BASE_URL + _headLines + source + _apiKeyString + _APIKey
     }
     
     init(APIkey: String) {

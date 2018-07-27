@@ -11,9 +11,9 @@ import UIKit
 class NewsVC: BaseCollectionViewController<NewsCell, ArticleViewModel>, UICollectionViewDelegateFlowLayout {
     
     var source: SourceViewModel!
-    
-    init(newSourceVM: SourceViewModel, collectionViewLayout layout: UICollectionViewLayout) {
-        super.init(withCellID: CellIdentifier.News.ID, collectionViewLayout: layout)
+	
+    init(withCellID cellID: String, newSourceVM: SourceViewModel, collectionViewLayout layout: UICollectionViewLayout) {
+        super.init(withCellID: cellID, collectionViewLayout: layout)
         self.source = newSourceVM
     }
     
@@ -28,19 +28,21 @@ class NewsVC: BaseCollectionViewController<NewsCell, ArticleViewModel>, UICollec
     }
     
     private func fetchData() {
-        network.fetchData (url: URL(string: network.urls.headLines(from: source.id))!, onSuccess: { (Articles: Articles) in
-            self.items = Articles.articles.map({ (article) -> ArticleViewModel in
+        network.getRequest (withUrl: URL(string: network.urls.headLines(from: source.sourceID))!, onSuccess: { (articles: Articles) in
+            self.items = articles.articles.map({ (article) -> ArticleViewModel in
                 return ArticleViewModel(article: article)
             })
-                self.collectionView?.reloadData()
-            }) { (e) in
-                print(e)
+            self.collectionView?.reloadData()
+            
+            }) { (err) in
+                print(err)
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.bounds.width, height: CGFloat(70))
     }
+    
 }
 
 extension NewsVC {

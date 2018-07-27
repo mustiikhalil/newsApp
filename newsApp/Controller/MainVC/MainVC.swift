@@ -23,13 +23,13 @@ class MainVC: BaseCollectionViewController<ChannelCell, SourceViewModel>, UIColl
     }
 
     private func fetch() {
-        network.fetchData(url: URL(string: network.urls.sources)!, onSuccess: { (sources: Sources) in
+        network.getRequest (withUrl: URL(string: network.urls.sources)!, onSuccess: { (sources: Sources) in
             self.items = sources.sources.map({ (source) -> SourceViewModel in
                 return SourceViewModel(source: source)
             })
             self.collectionView?.reloadData()
-        }) { (e) in
-            log.error(e)
+        }) { (err) in
+            log.error(err)
         }
     }
     
@@ -39,7 +39,7 @@ class MainVC: BaseCollectionViewController<ChannelCell, SourceViewModel>, UIColl
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let navStack = self.navigationController else {return}
-        let newsVC = NewsVC(newSourceVM: items[indexPath.row], collectionViewLayout: UICollectionViewFlowLayout())
+        let newsVC = NewsVC(withCellID: CellIdentifier.News.ID, newSourceVM: items[indexPath.row], collectionViewLayout: UICollectionViewFlowLayout())
         navStack.pushViewController(newsVC, animated: true)
     }
 }

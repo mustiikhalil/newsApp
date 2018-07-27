@@ -13,8 +13,8 @@ class BaseCollectionViewController<T: GenericCell<U>,U>: UICollectionViewControl
     private var cellID: String
     var items: [U] = []
     
-    init(withCellID id: String, collectionViewLayout layout: UICollectionViewLayout) {
-        self.cellID = id
+    init(withCellID cellid: String, collectionViewLayout layout: UICollectionViewLayout) {
+        self.cellID = cellid
         super.init(collectionViewLayout: layout)
     }
     

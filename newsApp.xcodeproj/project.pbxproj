@@ -171,7 +171,6 @@
 		DF655E4720C44F1700015236 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				DF03576A20EA00970062F248 /* BaseCollectionViewController.swift */,
 				DFD3623320C4863B006DF31C /* ChannelCell.swift */,
 				DFE65D9420C6D7C000E764C0 /* NewsCell.swift */,
 				DF89DCB620EA7C5A004DBCC8 /* GenericCell.swift */,
@@ -182,6 +181,7 @@
 		DF655E4820C44F2200015236 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				DF03576A20EA00970062F248 /* BaseCollectionViewController.swift */,
 				DFE65D9120C6D45400E764C0 /* NewsVC */,
 				DF655E4920C44F2A00015236 /* MainVC */,
 			);

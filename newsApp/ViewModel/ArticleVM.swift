@@ -9,14 +9,15 @@
 import Foundation
 
 struct ArticleViewModel {
-    var id: String
+    
+    var articleID: String
     var name: String
     var title: String
     var description: String
     var url: String
     
     init(article: Article) {
-        id = article.source?.id ?? ""
+        articleID = article.source?.id ?? ""
         name = article.source?.name ?? ""
         title = article.title ?? ""
         description = article.description ?? ""

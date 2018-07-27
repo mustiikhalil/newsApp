@@ -12,13 +12,13 @@ import Alamofire
 class Networking {
     
     var urls: URLS
-    var headers = ["Content-Type":"application/json"]
+    var headers = ["Content-Type": "application/json"]
     
     init(baseURLs: URLS) {
         self.urls = baseURLs
     }
     
-    func fetchData<T: Decodable> (url: URL, onSuccess: @escaping (T) -> Void, onFailure: @escaping (Error) -> Void) {
+    func getRequest<T: Decodable> (withUrl url: URL, onSuccess: @escaping (T) -> Void, onFailure: @escaping (Error) -> Void) {
         
         Alamofire.request(url).response { (response) in
 

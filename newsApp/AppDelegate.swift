@@ -13,6 +13,7 @@ let log = logger.logger
 let network = Networking(baseURLs: URLS(APIkey: newsAPIKey))
 
 @UIApplicationMain
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
