@@ -20,23 +20,41 @@ class Networking {
     
     func getRequest<T: Decodable> (withUrl url: URL, onSuccess: @escaping (T) -> Void, onFailure: @escaping (Error) -> Void) {
         
-        Alamofire.request(url).response { (response) in
-
-            if response.response?.statusCode == 200 {
+        URLSession.shared.dataTask(with: url) { (data, urlresponse, err) in
+            print("here")
+            if let response = urlresponse as? HTTPURLResponse, response.statusCode == 200 {
                 do {
-                    if let json = response.data {
+                    if let data = data {
+                        let json = try JSONDecoder().decode(T.self, from: data)
+                        DispatchQueue.main.async {
+                            onSuccess(json)
+                        }
                         
-                        let data = try JSONDecoder().decode(T.self, from: json)
-                        log.verbose("Success")
-                        onSuccess(data)
                     }
-                    
                 } catch let err {
-                    log.error(err)
-                    onFailure(err)
+                    DispatchQueue.main.async {
+                        onFailure(err)
+                    }
                 }
             }
-        }
+        }.resume()
+//        Alamofire.request(url).response { (response) in
+//
+//            if response.response?.statusCode == 200 {
+//                do {
+//                    if let json = response.data {
+//
+//                        let data = try JSONDecoder().decode(T.self, from: json)
+//                        log.verbose("Success")
+//                        onSuccess(data)
+//                    }
+//
+//                } catch let err {
+//                    log.error(err)
+//                    onFailure(err)
+//                }
+//            }
+//        }
     }
     
 }
